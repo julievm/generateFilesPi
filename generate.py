@@ -7,14 +7,15 @@ import string
 import cv2
 import argparse
 import captcha.image
+import time
 
 # similar to example code given
 def main():
 
-
+    start = time.time()
     width = 128
     height = 64
-    count = 20
+    count = 20000
     output_dir = 'tryfiles'
     symbols = 'characters_julie.txt'
 
@@ -46,6 +47,9 @@ def main():
 
         image = numpy.array(captcha_generator.generate_image(random_str))
         cv2.imwrite(image_path, image)
+
+        end = time.time()
+        print(end-start)
 
 
 # encode names to avoid the use of special characters
